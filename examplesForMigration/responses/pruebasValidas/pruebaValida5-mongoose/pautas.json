@@ -1,0 +1,80 @@
+{
+  "guidelinesForValidateSchema": {
+    "validationGuidelines": {
+      "schemaTransformationValidation": {
+        "steps": [
+          {
+            "step": 1,
+            "description": "Revisar la creación de tablas",
+            "action": "Verificar que todas las tablas especificadas en el script de migración se hayan creado en la base de datos PostgreSQL."
+          },
+          {
+            "step": 2,
+            "description": "Verificar tipos de datos",
+            "action": "Asegurarse de que los tipos de datos en las tablas coincidan con los tipos especificados en el script (ej. VARCHAR, DECIMAL, TIMESTAMP)."
+          },
+          {
+            "step": 3,
+            "description": "Revisar claves primarias",
+            "action": "Confirmar que cada tabla tenga una clave primaria definida y que se utilice 'SERIAL' para los identificadores."
+          },
+          {
+            "step": 4,
+            "description": "Verificar claves foráneas",
+            "action": "Asegurarse de que todas las claves foráneas estén correctamente definidas y que referencien las tablas adecuadas."
+          },
+          {
+            "step": 5,
+            "description": "Revisar tablas intermedias",
+            "action": "Confirmar que las relaciones muchos a muchos se hayan implementado correctamente a través de tablas intermedias."
+          },
+          {
+            "step": 6,
+            "description": "Revisar restricciones de unicidad",
+            "action": "Asegurarse de que las restricciones de unicidad, como la del campo 'email' en la tabla Usuario, estén implementadas."
+          }
+        ]
+      },
+      "schemaOptimizationValidation": {
+        "steps": [
+          {
+            "step": 1,
+            "description": "Verificar índices",
+            "action": "Confirmar que se hayan creado índices en columnas clave como 'email' en Usuario y 'nombre' en Producto."
+          },
+          {
+            "step": 2,
+            "description": "Ejecutar consultas de prueba",
+            "action": "Realizar consultas de prueba para verificar que el rendimiento sea adecuado y que los resultados sean correctos (ej. búsqueda por nombre, filtrado por precio, etc.)."
+          },
+          {
+            "step": 3,
+            "description": "Evaluar la normalización",
+            "action": "Asegurarse de que el esquema esté normalizado adecuadamente para evitar la redundancia de datos."
+          },
+          {
+            "step": 4,
+            "description": "Revisar integridad referencial",
+            "action": "Probar la integridad referencial realizando inserciones, actualizaciones y eliminaciones para verificar que las restricciones funcionen como se espera."
+          },
+          {
+            "step": 5,
+            "description": "Verificar la documentación",
+            "action": "Asegurarse de que la documentación del esquema esté actualizada y refleje la estructura actual en PostgreSQL."
+          }
+        ]
+      },
+      "manualTestingSuggestions": [
+        "Crear registros de prueba en cada tabla para verificar que las inserciones se realicen correctamente.",
+        "Ejecutar consultas de selección en cada tabla para asegurar que los datos se recuperen como se espera.",
+        "Probar la eliminación de registros y verificar que las restricciones de claves foráneas se apliquen correctamente.",
+        "Realizar consultas de unión para comprobar que las relaciones entre tablas funcionen adecuadamente."
+      ],
+      "checkpoints": [
+        "Confirmar que todas las tablas y columnas tengan los nombres correctos y que no haya errores tipográficos.",
+        "Verificar que las restricciones y las claves foráneas se apliquen correctamente y no generen errores al intentar insertar datos.",
+        "Asegurarse de que los datos migrados desde MongoDB a PostgreSQL se mantengan consistentes y completos."
+      ]
+    }
+  }
+}
